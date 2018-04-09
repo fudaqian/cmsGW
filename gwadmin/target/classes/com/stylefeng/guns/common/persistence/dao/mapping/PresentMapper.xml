@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.PresentMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.Present">
+		<id column="id" property="id" />
+		<result column="sn" property="sn" />
+		<result column="name" property="name" />
+		<result column="company" property="company" />
+		<result column="presentMoney" property="presentMoney" />
+		<result column="worth" property="worth" />
+		<result column="presentFactory" property="presentFactory" />
+		<result column="presentSpec" property="presentSpec" />
+		<result column="processResult" property="processResult" />
+		<result column="acceptDate" property="acceptDate" />
+		<result column="creatDate" property="creatDate" />
+		<result column="modifyDate" property="modifyDate" />
+		<result column="modifyUserName" property="modifyUserName" />
+		<result column="userName" property="userName" />
+		<result column="version" property="version" />
+	</resultMap>
+
+</mapper>

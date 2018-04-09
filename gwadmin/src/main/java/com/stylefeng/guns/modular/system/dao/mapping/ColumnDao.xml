@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.ColumnDao">
+	
+	<select id="list" resultType="map">
+		select * from columns where 1 = 1
+		<if test="id != null and id != 0">
+			 and id = #{id}
+		</if>
+		<if test="condition != null and condition != ''">
+			 and name like CONCAT('%',#{condition},'%')
+		</if>
+		<if test="deptid != null and deptid != 0">
+			 and deptid = #{deptid}
+		</if>
+		<if test="istop != null">
+			 and istop = #{istop}
+		</if>
+		order by num
+	</select>
+	
+	<select id="getColumnByDept" resultType="java.lang.Integer">
+		select id from columns where deptid = #{deptid} order by num
+	</select>
+	
+	<select id="tree" resultType="com.stylefeng.guns.core.node.ZTreeNode">
+		SELECT id,pid AS pId,name AS NAME,'true' AS isOpen FROM columns where 1 = 1
+		<if test="deptid != null and deptid != 0">
+			 and deptid = #{deptid}
+		</if>
+	</select>
+</mapper>

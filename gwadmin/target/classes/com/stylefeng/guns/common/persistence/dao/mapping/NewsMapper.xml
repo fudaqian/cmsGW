@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.NewsMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.News">
+		<id column="id" property="id" />
+		<id column="cloumnId" property="cloumnId" />
+		<result column="title" property="title" />
+		<result column="subtitle" property="subtitle" />
+		<result column="istop" property="istop" />
+		<result column="htmlContent" property="htmlContent" />
+		<result column="image" property="image" />
+		<result column="modifyDate" property="modifyDate" />
+		<result column="creatDate" property="creatDate" />
+		<result column="userName" property="userName" />
+		<result column="version" property="version" />
+	</resultMap>
+
+</mapper>

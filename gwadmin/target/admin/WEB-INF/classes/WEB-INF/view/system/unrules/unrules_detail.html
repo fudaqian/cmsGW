@@ -1,0 +1,48 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="sn" name="编号" value="${unrules.sn}"/>
+					<#input id="unruleCompany" name="违规公司名称" value="${unrules.unruleCompany}"/>
+					<#input id="concertProject" name="合作项目" value="${unrules.concertProject}" />
+					<#input id="checkTime" name="接受日期" value="${unrules.checkTime}"/>
+					<#input id="unruleThing" name="违规事项" value="${unrules.unruleThing}" />
+					<#input id="userName" name="创建人" value="${unrules.userName}" />
+					<#input id="creatDate" name="创建日期" value="${unrules.creatDate}" />
+					<#input id="modifyUserName" name="近期修改人" value="${unrules.modifyUserName}" />
+					<#input id="modifyDate" name="最近修改时间" value="${unrules.modifyDate}" />
+				</div>
+				<div class="col-sm-6">
+					<h5>处理结果</h5>
+					<div class="ibox-content no-padding">
+						<div id="summernote" class="summernote">
+							${unrules.processResult}
+						</div>
+					</div>
+				</div>
+				<div class="row btn-group-m-t">
+					<div class="col-sm-10">						
+						<#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser"
+							clickFun="UnrulesInfoDlg.close()" space="true" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/unrules/unrules_info.js"></script>
+<script>
+$(document).ready(function() {
+	$('#summernote').summernote({
+		lang : 'zh-CN',
+		height : 250, // set editor height
+		minHeight : 200, // set minimum height of editor
+		maxHeight : 550, // set maximum height of editor
+		focus : true
+	// set focus to editable area after initializing summernote
+	});
+});
+</script>
+@}

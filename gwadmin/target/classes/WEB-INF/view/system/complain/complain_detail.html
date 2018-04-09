@@ -1,0 +1,62 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<input type="hidden" id="id" value="${complain.id}"> 
+			<input type="hidden" id="ischeckValue" value="${complain.ischeck}">
+			<input type="hidden" id="fileName" value="${complain.fileName}">
+			<input type="hidden" id="file" value="${complain.file}">
+			<input type="hidden" id="fileType" value="${complain.fileType}">
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="sn" name="编号" value="${complain.sn}" />
+					<#input id="acceptName" name="被举报人" value="${complain.acceptName}" />
+					<#input id="acceptDepartment" name="所属部门"
+						value="${complain.acceptDepartment}" />
+					<#input id="acceptCompany" name="所在公司"
+						value="${complain.acceptCompany}" />
+
+					<#select id="ischeck" name="是否实名举报">
+					<option value="是">是</option>
+					<option value="不是">不是</option>
+					</#select>
+					<#input id="acceptType" name="举报类型" value="${complain.acceptType}" />
+					<#input id="putName" name="举报人" value="${complain.putName}" />
+					<#select id="putStatus" name="身份">
+					<option value="员工">员工</option>
+					<option value="供应商">供应商</option>
+					<option value="客户">客户</option>
+					<option value="业主">业主</option>
+					<option value="其他人">其他人</option>
+					</#select>
+					<#input id="putPhone" name="手机号码" value="${complain.putPhone}" />
+					<#input id="putEmail" name="邮箱" value="${complain.putEmail}"
+						underline="true" />
+					<#input id="title" name="举报标题" value="${complain.title}" />
+					<#input id="place" name="地点" value="${complain.place}" />
+					<#input id="content" name="具体过程" value="${complain.content}"
+						underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<div class="" id="fileBtnId">
+						选择举报文件
+					</div>
+					<#button name="下载举报文件" icon="" clickFun="ComplainInfoDlg.down()"/>
+					<div id="filePreId">
+						
+					</div>
+				</div>
+			</div>
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser"
+						clickFun="ComplainInfoDlg.close()" space="true" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/system/complain/complain_info.js"></script>
+@}

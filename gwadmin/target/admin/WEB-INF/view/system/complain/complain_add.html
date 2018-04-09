@@ -1,0 +1,82 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<input type="hidden" id="file" value="">
+			<input type="hidden" id="acceptType" value="">
+			<input type="hidden" id="fileName" value="">
+			<input type="hidden" id="fileType" value="">
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="acceptName" name="被举报人" />
+					<#input id="acceptDepartment" name="所属部门" />
+					<#input id="acceptCompany" name="所在公司" />
+
+					<div class="form-group">
+                       <label class="col-sm-3 control-label">举报类型
+                       </label>
+
+                       <div class="col-sm-6">
+                           <div class="checkbox i-checks">
+                               <label>
+                                   <input type="checkbox" value="侵占资产或截留收入" name="typeBox"> <i></i>侵占资产或截留收入</label>
+                           </div>              
+                           <div class="checkbox i-checks">
+                               <label>
+                                   <input type="checkbox" value="虚报成本费用" name="typeBox"> <i></i>虚报成本费用</label>
+                           </div>              
+                           <div class="checkbox i-checks">
+                               <label>
+                                   <input type="checkbox" value="挪用和窃取财物" name="typeBox"> <i></i>挪用和窃取财物</label>
+                           </div>              
+                           <div class="checkbox i-checks">
+                               <label>
+                                   <input type="checkbox" value="其它违反廉政文化事项" name="typeBox"> <i></i>其它违反廉政文化事项</label>
+                           </div>              
+                       </div>
+                    </div>
+					<#input id="title" name="举报标题" value="" />
+					<#input id="place" name="地点" value="" />
+					<#input id="content" name="具体过程" value="" underline="true" />
+
+					<#input id="putName" name="举报人" value="" />
+					<#select id="putStatus" name="身份">
+					<option value="">请选择身份</option>
+					<option value="员工">员工</option>
+					<option value="供应商">供应商</option>
+					<option value="客户">客户</option>
+					<option value="业主">业主</option>
+					<option value="其他人">其他人</option>
+					</#select>
+					<#input id="putPhone" name="手机号码" value="" />
+					<#input id="putEmail" name="邮箱" value="" underline="true" />
+
+				</div>
+				<div class="col-sm-6">
+					<div class="" id="fileBtnId">
+						<i class="fa fa-upload"></i>&nbsp;选择文件
+					</div>
+					<div id="filePreId"></div>
+				</div>
+				<div class="row btn-group-m-t">
+					<div class="col-sm-10">
+						<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+							clickFun="ComplainInfoDlg.addSubmit()" space="true" />
+						<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+							clickFun="ComplainInfoDlg.close()" space="true" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/complain/complain_info.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+	});
+</script>
+@}

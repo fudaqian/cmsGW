@@ -1,0 +1,52 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<input type="hidden" id="id" value="${present.id}">
+			<input type="hidden" id="version" value="${present.version}">
+			<input type="hidden" id="processResult" value="">
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="sn" name="编号" value="${present.sn}"/>
+					<#input id="name" name="姓名" value="${present.name}"/>
+					<#input id="company" name="所属公司" value="${present.company}"/>
+					<#input id="acceptDate" name="接受日期" value="${present.acceptDate}" />
+					<#input id="presentMoney" name="礼品礼金" value="${present.presentMoney}" />
+					<#input id="worth" name="价值（元）" value="${present.worth}" />
+					<#input id="presentFactory" name="礼品厂商" value="${present.presentFactory}" />
+					<#input id="presentSpec" name="礼品规格" value="${present.presentSpec}" />
+				</div>
+				<div class="col-sm-6">
+					<h5>处理结果</h5>
+					<div class="ibox-content no-padding">
+						<div id="summernote" class="summernote">
+							${present.processResult}
+						</div>
+					</div>
+				</div>
+				<div class="row btn-group-m-t">
+					<div class="col-sm-10">
+						<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+							clickFun="PresentInfoDlg.editSubmit()" space="true" />
+						<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+							clickFun="PresentInfoDlg.close()" space="true" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/present/present_info.js"></script>
+<script>
+$(document).ready(function() {
+	$('#summernote').summernote({
+		lang : 'zh-CN',
+		height : 250, // set editor height
+		minHeight : 200, // set minimum height of editor
+		maxHeight : 550, // set maximum height of editor
+		focus : true
+	// set focus to editable area after initializing summernote
+	});
+});
+</script>
+@}

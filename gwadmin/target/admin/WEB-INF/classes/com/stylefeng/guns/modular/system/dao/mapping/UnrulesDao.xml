@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.UnrulesDao">
+
+	<select id="list" resultType="map">
+		select * from unrules where 1=1
+		<if test="sn != null and sn != '' ">
+			and sn = #{sn}
+		</if>
+		<if test="unruleCompany != null and unruleCompany != '' ">
+			and unrule_company like CONCAT('%',#{unruleCompany},'%')
+		</if>
+		<if test="attributeCompany != null and attributeCompany != '' ">
+			and attribute_company like CONCAT('%',#{attributeCompany},'%')
+		</if>
+		
+		<if test="condition != null and condition != '' ">
+			and sn like CONCAT('%',#{condition},'%')
+			or unrule_company like CONCAT('%',#{condition},'%')
+			or concert_project like CONCAT('%',#{condition},'%') 
+			or unrule_thing like CONCAT('%',#{condition},'%') 
+			or attribute_company like CONCAT('%',#{condition},'%')
+			or process_result like CONCAT('%',#{condition},'%')
+		</if>
+		order by unrules.creat_date desc
+		<if test="pagenum != null and pagesize != null and pagesize != 0">
+			 limit #{pagenum},#{pagesize}
+		</if>
+	</select>
+
+	<select id="countPresents" resultType="java.lang.Integer">
+		select count(id) from unrules where 1=1
+
+		<if test="condition != null and condition != '' ">
+			and sn like CONCAT('%',#{condition},'%')
+			or unrule_company like CONCAT('%',#{condition},'%')
+			or concert_project like CONCAT('%',#{condition},'%') 
+			or unrule_thing like CONCAT('%',#{condition},'%') 
+			or attribute_company like CONCAT('%',#{condition},'%')
+			or process_result like CONCAT('%',#{condition},'%')
+		</if>
+	</select>
+
+</mapper>

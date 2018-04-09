@@ -1,0 +1,75 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">	
+			<input type="hidden" id="image" value="">
+			<input type="hidden" id="htmlContent" value="">
+			<input type="hidden" id="istop" value="">
+			<input type="hidden" id="subtitle" value="">
+			<div class="row">
+				<div class = "col-sm-6">
+					<#NameCon id="title" name="新闻标题" />
+					<div class="input-group">
+						<div class="input-group-btn">
+							<button data-toggle="dropdown"
+								class="btn btn-white dropdown-toggle" type="button">
+								所属栏目</button>
+						</div>
+						<select class="form-control" id="cloumnId">
+							@for(column in columns){
+								<option value="${column.id}">${column.name}</option>
+							@}
+						</select>
+					</div>
+					<#TimeCon id="creatDate" name="创建时间" isTime="false" pattern="YYYY-MM-DD" />
+                    <label class="control-label">是否置顶&nbsp;&nbsp;
+						<input type="radio" name="radio1" id="istopVal"
+							value="1">
+						<label>是
+						</label>
+						<input type="radio" name="radio1" id="istopVal"
+							value="0">
+						<label>否
+						</label>
+					</label>
+					<div class="" id="imageBtnId">
+						<i class="fa fa-upload"></i>&nbsp;选择封面图片
+					</div>
+				</div>
+				<div class="col-sm-6">	
+					<div id="imagePreId">
+						
+					</div>
+				</div>
+			</div>
+            <h4>副标题</h4>
+			<textarea id="subTitleT" cols="20" rows="2" class="ckeditor"></textarea>
+            <h4>新闻正文</h4>
+			<textarea id="htmlContentT" cols="20" rows="2" class="ckeditor"></textarea>
+		</div>
+		<div class="row btn-group-m-t">
+			<div class="col-sm-12">
+				<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+					clickFun="NewsInfoDlg.addSubmit()" space="true" />
+				<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+					clickFun="NewsInfoDlg.close()" space="true" />
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/ckeditor/ckeditor.js"></script>
+<script src="${ctxPath}/static/modular/system/news/news_info.js"></script>
+<script>
+	$(document).ready(function() {
+	    CKEDITOR.replace('htmlContentT');
+	    CKEDITOR.replace('subTitleT',{
+	    	height: 150
+	    });
+		$('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+
+    });
+</script>
+@}

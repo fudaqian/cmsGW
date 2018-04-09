@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.NewsDao">
+	
+	<select id="list" resultType="map">
+		select * from news LEFT JOIN `columns` c ON news.cloumn_id = c.id where 1 = 1
+		<if test="id != null and id != 0">
+			 and news.id = #{id}
+		</if>
+		<if test="istop != null">
+			 and news.istop = #{istop}
+		</if>
+		<if test="cloumnId != null">
+			 and news.cloumn_id = #{cloumnId}
+		</if>
+		<if test="cloumns != null and cloumns.size() > 0 ">
+			and news.cloumn_id in 
+			<foreach collection="cloumns" index="index" item="item" open="(" separator="," close=")">  
+        		#{item}
+    		</foreach>
+		</if>
+		<if test="condition != null and condition != ''">
+			 and (news.html_content like CONCAT('%',#{condition},'%') or news.title like CONCAT('%',#{condition},'%'))
+		</if>
+		order by news.creat_date desc
+		<if test="pagenum != null and pagesize != null and pagesize != 0">
+			 limit #{pagenum},#{pagesize}
+		</if>
+	</select>
+	
+	<select id="countNews" resultType="java.lang.Integer">
+		select count(id) from news where 1=1
+		<if test="cloumnId != null">
+			 and news.cloumn_id = #{cloumnId}
+		</if>
+		<if test="cloumns != null and cloumns.size() > 0 ">
+			and news.cloumn_id in 
+			<foreach collection="cloumns" index="index" item="item" open="(" separator="," close=")">  
+        		#{item}
+    		</foreach>
+		</if>
+		<if test="condition != null and condition != ''">
+			 and (news.html_content like CONCAT('%',#{condition},'%')
+			 or news.title like CONCAT('%',#{condition},'%'))
+		</if>
+	</select>
+</mapper>

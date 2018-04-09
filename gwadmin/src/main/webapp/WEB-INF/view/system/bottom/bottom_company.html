@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+            	@if(!isEmpty(company)){
+	            	<input type="hidden" id="id" value="${company.id}">
+	                <div class="col-sm-6">
+						<#input id="place" name="公司地址"  value ="${company.place}" />
+						<#input id="email" name="公司邮箱"  value ="${company.email}" />
+	                	<#input id="phone" name="电话热线"  value ="${company.phone}"/>
+	                	<#input id="fax" name="传真"  value ="${company.fax}"/>
+						<#input id="copyright_information" name="版权信息" value ="${company.copyright_information}" />
+	                </div>
+                @}else{
+                      <div class="col-sm-6">
+						<#input id="place" name="公司地址"  value ="" />
+						<#input id="email" name="公司邮箱"  value ="" />
+	                	<#input id="phone" name="电话热线"  value =""/>
+	                	<#input id="fax" name="传真"  value =""/>
+						<#input id="copyright_information" name="版权信息" value ="" />
+	                </div>
+                @}
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="Bottom.updateCompany()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bottom/bottom.js"></script>
+@}

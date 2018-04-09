@@ -1,0 +1,54 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>违规合作</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="关键字" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="sn" name="编号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="unruleCompany" name="违规公司名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="checkTime" name="查处时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>                           
+                            <div class="col-sm-3">
+                                <#NameCon id="attributeCompany" name="所属公司" />
+                            </div>               
+                                
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Unrules.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="UnrulesTableToolbar" role="group">
+                       			@if(shiro.hasPermission("/unrules/add")){
+                       				<#button name="添加" icon="fa-plus" clickFun="Unrules.openAdd()"/>
+								@}
+                                @if(shiro.hasPermission("/unrules/detail")){
+                                	<#button name="查看详情" icon="fa-search" clickFun="Unrules.openDetail()" space="true"/>
+                                @}
+                                @if(shiro.hasPermission("/unrules/edit")){
+                                	<#button name="修改" icon="fa-edit" clickFun="Unrules.openEdit()" space="true"/>
+                                @}
+                                @if(shiro.hasPermission("/unrules/delete")){
+                                	<#button name="删除" icon="fa-remove" clickFun="Unrules.del()" space="true"/>
+                        		@}
+                        </div>
+                        <#table id="UnrulesTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/unrules/unrules.js"></script>
+@}

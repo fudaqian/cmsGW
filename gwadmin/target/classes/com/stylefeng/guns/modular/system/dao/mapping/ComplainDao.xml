@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.ComplainDao">
+	
+	<select id="list" resultType="map">
+		select * from complain where 1=1		
+		<if test="id != null and id != 0">
+			 and id = #{id}
+		</if>
+		<if test="acceptName != null and acceptName != ''">
+			 and accept_name like CONCAT('%',#{acceptName},'%')
+		</if>
+		<if test="acceptType != null and acceptType != ''">
+			 and accept_type like CONCAT('%',#{acceptType},'%')
+		</if>
+		<if test="ischeck == '匿名'">
+			 and put_name like CONCAT('%',#{ischeck},'%')
+		</if>
+		<if test="ischeck == '实名'">
+			 and put_name not like CONCAT('%',#{ischeck},'%')
+		</if>
+		
+	</select>
+
+</mapper>

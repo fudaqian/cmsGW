@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BottomDao">
+	
+	<select id="urlList" resultType="map">
+		select * from bottom_url where 1 = 1
+		<if	test=" deptid != null and deptid != 0 ">
+			and deptid = #{deptid}
+		</if>
+		<if	test=" bottomUrlId != null and bottomUrlId != 0 ">
+			and id = #{bottomUrlId}
+		</if>
+	</select>
+	
+	<select id="companyList" resultType="map">
+		select * from bottom_company where 1 = 1
+		<if	test=" deptid != null and deptid != 0 ">
+			and deptid = #{deptid}
+		</if>
+	</select>
+	
+	<update id="updateCompany">
+		update bottom_company set place = #{place},phone = #{phone},email = #{email},copyright_information = #{copyright_information},fax = #{fax} where id = #{id}
+	</update>
+	
+	<insert id="insertCompany">
+		insert into bottom_company (place,phone,email,copyright_information,deptid,fax) values (#{place},#{phone},#{email},#{copyright_information},#{deptid},#{fax})
+	</insert>
+	
+	<delete id="bottomUrlRemove">
+		delete from bottom_url where id = #{id}
+	</delete>
+
+	<insert id="addBottomUrl">
+		insert into bottom_url (url,url_name,deptid) values (#{url},#{urlName},#{deptid})
+	</insert>
+	
+	<update id="updateBottomUrl">
+		update bottom_url set url = #{url},url_name = #{urlName} where id = #{id}
+	</update>
+</mapper>
